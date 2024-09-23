@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, jsonify
 from final_predicting import get_future_price, historical_data_func, get_corr
 import json
@@ -6,10 +7,16 @@ import yfinance as yf
 
 app = Flask(__name__)
 
-@app.route('/', methods=['POST','GET'])
-def home_page():
-    return render_template('index.html')@app.route('/index')
+@app.route('/')
+def login():
+    return render_template('login.html')
 
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 @app.route('/process_selection', methods=['GET','POST'])
 def process_selection():
